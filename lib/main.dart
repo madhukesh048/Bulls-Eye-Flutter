@@ -11,10 +11,13 @@ class MyApp extends StatelessWidget {
         [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+      home: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage("assets/Background@2x.png"), fit: BoxFit.cover),
+        ),
+        child: Homepage(),
       ),
-      home: Homepage(),
     );
   }
 }
