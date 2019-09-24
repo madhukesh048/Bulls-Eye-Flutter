@@ -18,18 +18,22 @@ class _HomepageState extends State<Homepage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.fromLTRB(20, 80, 20, 0),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text(
-                "Hit the Bulls's Eye as close as possible: $targetValue",
-                style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white),
+              Expanded(
+                child: Center(
+                  child: Text(
+                    "Hit the Bulls's Eye as close as possible: $targetValue",
+                    style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                ),
               ),
               SizedBox(
                 height: 30,
@@ -47,7 +51,7 @@ class _HomepageState extends State<Homepage> {
                     child: Slider(
                       min: 0,
                       max: 100,
-                      activeColor: Colors.amberAccent,
+                      activeColor: Colors.amber,
                       inactiveColor: Colors.black,
                       onChanged: (value) {
                         setState(() {
@@ -83,7 +87,7 @@ class _HomepageState extends State<Homepage> {
                     },
                   );
                 },
-                color: Colors.amberAccent,
+                color: Colors.amber,
                 child: Text(
                   "Hit me!",
                   style: TextStyle(color: Colors.black, fontSize: 24),
@@ -92,42 +96,43 @@ class _HomepageState extends State<Homepage> {
               SizedBox(
                 height: 30,
               ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.refresh),
-                      iconSize: 36,
-                      color: Colors.white,
-                    ),
-                    Text(
-                      'Score: $score',
-                      style: TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                    SizedBox(
-                      width: 180,
-                    ),
-                    Text(
-                      'Round: $roundNumber',
-                      style: TextStyle(
-                          fontSize: 26,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(Icons.info),
-                      iconSize: 36,
-                      color: Colors.white,
-                    ),
-                  ],
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  IconButton(
+                    onPressed: () {
+                      newRound();
+                    },
+                    icon: Icon(Icons.refresh),
+                    iconSize: 36,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    'Score: $score',
+                    style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  SizedBox(
+                    width: 180,
+                  ),
+                  Text(
+                    'Round: $roundNumber',
+                    style: TextStyle(
+                        fontSize: 26,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, 'about');
+                    },
+                    icon: Icon(Icons.info),
+                    iconSize: 36,
+                    color: Colors.white,
+                  ),
+                ],
               )
             ],
           ),
